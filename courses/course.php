@@ -1,6 +1,6 @@
 <?php
-include 'layout/navbar.php';
-require_once "./controllers/config.php";
+include '../layout/navbar.php';
+require_once "../controllers/config.php";
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
@@ -19,6 +19,10 @@ if(isset($_GET['id'])){
     <h6 style="padding-bottom:5px;border-bottom: 5px solid rgb(47, 153, 138);"><?= $department ?></h6>
     <p style="padding-bottom:5px;border-bottom: 5px solid rgb(47, 153, 138);"><?= $summary ?></p>
     <p><?= $content ?></p>
-    <a href="apply?id=<?=$uuid?>" class="btn btn-primary">Apply Now</a>
+    <?php if(isset($_SESSION['id'])){ ?>
+        <a href="../recruit/apply?id=<?=$uuid?>" class="btn btn-primary">Apply Now</a>
+    <?php } else { ?>
+    <h6>Please login to apply.</h6>
+    <?php } ?>
 </div>
-<?php include 'layout/footer.php';?>
+<?php include '../layout/footer.php';?>

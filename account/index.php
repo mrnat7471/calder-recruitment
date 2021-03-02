@@ -1,6 +1,6 @@
 <?php 
-include 'navbar.php';
-require_once 'controllers/email_verification.php';
+include '../layout/navbar.php';
+require_once '../controllers/email_verification.php';
 $id = $_SESSION['id'];
 
 if(isset($ROLE_READ)){
@@ -68,4 +68,4 @@ $stmt->close();
     }
 }
 </style>
-<?php include 'footer.php';?>
+<?php include '../layout/footer.php';?>

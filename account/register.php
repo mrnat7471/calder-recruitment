@@ -1,5 +1,5 @@
 <?php 
-include 'layout/navbar.php';
+include '../layout/navbar.php';
 
 $firstName = "";
 $lastName = "";
@@ -9,7 +9,7 @@ $message = NULL;
 $complete = FALSE;
 
 if(isset($_POST['register_submit'])){
-    require_once 'controllers/config.php';
+    require_once '../controllers/config.php';
     $firstName = $_POST['first_name'];
     $lastName = $_POST['last_name'];
     $email = $_POST['email'];
@@ -73,4 +73,4 @@ if(isset($_POST['register_submit'])){
         <p>Thank you for registering!<br>Please check your email to verify your account.</p>
     <?php } ?>
 </div>
-<?php include 'layout/footer.php';?>
+<?php include '../layout/footer.php';?>

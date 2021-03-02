@@ -1,6 +1,6 @@
 <?php 
 include 'navbar.php';
-require_once "config.php";
+require_once "controllers/config.php";
 
 $connection = $link;
 $sql3 = "select * from courses ORDER BY RAND() LIMIT 3";
@@ -38,7 +38,7 @@ $data3 = json_decode($apidata3);
 <?php } ?>
   </div>
 </div>
-<?php include 'footer.php';?>
+<?php include 'layout/footer.php';?>
 <style>
 .home-background{
     background-image: url("assets/banner.jpg");

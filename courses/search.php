@@ -1,8 +1,8 @@
 <?php
 $search = "";
-include 'layout/navbar.php';
+include '../layout/navbar.php';
 if(isset($_GET['search'])){
-    require_once "./controllers/config.php";
+    require_once "../controllers/config.php";
     $connection = $link;
     $search = $_GET['search'];
     $sql3 = "select * from courses where name like '%$search%'";
@@ -34,4 +34,4 @@ if(isset($_GET['search'])){
         <a href="course?id=<?=$uuid?>"><?= $name ?></a><br>
     </div>
 </div>
-<?php } include 'layout/footer.php';?>
+<?php } include '../layout/footer.php';?>

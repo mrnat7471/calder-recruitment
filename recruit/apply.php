@@ -1,7 +1,7 @@
 <?php
-include 'navbar.php';
-require_once "./controllers/config.php";
-require_once 'controllers/email_verification.php';
+include '../layout/navbar.php';
+require_once "../controllers/config.php";
+require_once '../controllers/email_verification.php';
 
 if(isset($_SESSION['id'])){
     if(isset($_GET['id'])){
@@ -22,10 +22,10 @@ if(isset($_SESSION['id'])){
         $stmt2->fetch();
         $stmt2->close();
     }else{
-        header("Location: ./?danger=Please search then apply for a course.");
+        header("Location: ../?danger=Please search then apply for a course.");
     }
 }else{
-    header("Location: ./?danger=Please Login.");
+    header("Location: ../?danger=Please Login.");
 }
 ?>
 
@@ -89,4 +89,4 @@ if(isset($_SESSION['id'])){
     }
 }
 </style>
-<?php include 'footer.php';?>
+<?php include '../layoutfooter.php';?>

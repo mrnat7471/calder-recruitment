@@ -1,8 +1,8 @@
-<?php include '../navbar.php'; ?>
+<?php include '../layout/navbar.php'; ?>
 <div class="role-content">
     <h5><b>Role Management:</b></h5>
 <?php
-require_once "./controllers/config.php";
+require_once "../controllers/config.php";
 
 if(isset($_SESSION['id'])){
     $connection = $link;
@@ -62,7 +62,7 @@ if(isset($_SESSION['id'])){
 
 ?>
 </div>
-<?php include '../footer.php';?>
+<?php include '../layout/footer.php';?>
 <style>
 .role-content{
     margin-left:250px;

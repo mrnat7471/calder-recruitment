@@ -1,5 +1,5 @@
 <?php 
-include 'layout/navbar.php';
+include '../layout/navbar.php';
 
 $message = NULL;
 $email = "";
@@ -7,7 +7,7 @@ $email = "";
 if(isset($_POST['login_submit'])){
     $email = $_POST['email'];
 
-    require_once 'controllers/config.php';
+    require_once '../controllers/config.php';
     $sql = "SELECT uuid, email, password FROM users WHERE email = ?";
             
     if($stmt = mysqli_prepare($link, $sql)){
@@ -55,4 +55,4 @@ if(isset($_POST['login_submit'])){
         <input type="submit" name="login_submit" value="Login">
     </form>
 </div>
-<?php include 'layout/footer.php';?>
+<?php include '../layout/footer.php';?>

@@ -1,7 +1,7 @@
 <?php 
 
 session_start(); 
-require_once 'controllers/permission_checker.php';
+require_once '../controllers/permission_checker.php';
 
 if(isset($_GET['logout'])){
     session_unset();
