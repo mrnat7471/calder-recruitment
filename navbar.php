@@ -1,0 +1,121 @@
+<?php 
+
+session_start(); 
+require_once 'permission_checker.php';
+
+if(isset($_GET['logout'])){
+    session_unset();
+    session_destroy();
+    header('Location: ./');
+}
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/icon.png" type="image/png" sizes="16x16">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <title>Calderdale Recruitment</title>
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(47, 153, 138);box-shadow: 0px 5px rgba(47, 153, 138, 0.4);">
+  <a class="navbar-brand" href="./"><img src="https://nathan7471.xyz/img/lAco9/FaKaJOTe11.png/raw" style="max-width:100px;"></a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="../">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../recruitment/courses/">Courses</a>
+      </li>
+
+      <li class="nav-item dropdown">
+      <?php if(isset($APPLICANT_READ)){ ?>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Application
+        </a>
+      <?php } ?>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Your Application</a>
+          <a class="dropdown-item disabled" href="#">Enrolment</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Messages</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <?php if(isset($ADMIN_READ)){ ?>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Administrator
+        </a>
+        <?php } ?>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Applications</a>
+          <a class="dropdown-item" href="#">All Applications</a>
+          <a class="dropdown-item" href="#">Applications assigned to you</a>
+          <a class="dropdown-item" href="#">Messages</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Account Management</a>
+          <a class="dropdown-item" href="role-management">Role Management</a>
+        </div>
+      </li>
+      <?php if(isset($_SESSION['loggedin'])){ ?>
+        <li class="nav-item">
+        <a class="nav-link" href="account"><i class="fas fa-user"></i> Account</a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./?logout=true">Logout</a>
+        </li>
+      <?php } else{ ?>
+      <li class="nav-item">
+        <a class="nav-link" href="login"><i class="fas fa-user"></i> Login</a>
+      </li>
+      <?php } ?>
+    </ul>
+    <form class="form-inline my-2 my-lg-0 search" action="search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search for a course" name="search" aria-label="Search" required>
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<?php if(isset($_GET['success']) || isset($_GET['danger'])){ ?>
+<div class="m-2">
+    <?php if(isset($_GET['success'])){ ?>
+    <div class="alert alert-success" role="alert">
+        <?= $_GET['success']; ?>
+    </div>
+    <?php } if(isset($_GET['danger'])){ ?>
+    <div class="alert alert-danger" role="alert">
+        <?= $_GET['danger']; ?>
+    </div>
+    <?php } ?>
+</div>
+<?php } ?>
+<style>
+    .nav-link{
+        color:black!important;
+    }
+</style>
+<script>
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+<style>
+@media(max-width:500px){
+    .search{
+        display:none;
+    }
+}
+</style>
