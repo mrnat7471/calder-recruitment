@@ -1,12 +1,12 @@
 <?php
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root'); #user
-define('DB_PASSWORD', ''); #vhR8t76#
+define('DB_SERVER', 'localhost:3306'); #localhost:3306
+define('DB_USERNAME', 'calder'); #calder
+define('DB_PASSWORD', '9#Ulmr21'); #9#Ulmr21
 define('DB_NAME', 'recruitment');
 
 $servername = DB_SERVER;
-$username = DB_USERNAME; #user
-$password = DB_PASSWORD; #vhR8t76#
+$username = DB_USERNAME;
+$password = DB_PASSWORD;
 $dbname = DB_NAME;
  
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
