@@ -2,8 +2,8 @@
 include 'navbar.php';
 require_once "controllers/config.php";
 
-$connection = $link;
-$sql3 = "select * from courses ORDER BY RAND() LIMIT 3";
+$connection = $link; //ORDER BY RAND()
+$sql3 = "select * from courses LIMIT 3";
 $result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
 $emparray3 = array();
 while($row3 =mysqli_fetch_assoc($result3))
