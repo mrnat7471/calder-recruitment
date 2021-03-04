@@ -25,6 +25,7 @@ $data3 = json_decode($apidata3);
     $summary = $apidata3->summary;
     $uuid = $apidata3->uuid;
     $image = $apidata3->image; ?>
+    <?=$name?>
     <div class="col-md-4 mt-2">
         <div class="card mt-2 mb-2" style="width: 18rem;">
             <img class="card-img-top" height=190px style="object-fit:cover;" src="<?=$image?>" alt="Card image cap">
