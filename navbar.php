@@ -41,21 +41,21 @@ if(isset($_GET['logout'])){
       </li>
 
       <li class="nav-item dropdown">
-      <?php if(isset($APPLICANT_READ)){ ?>
+      <?php if($APPLICANT_READ === 1){ ?>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Application
         </a>
       <?php } ?>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="../recruit/your-applications">Your Applications</a>
-          <a class="dropdown-item disabled" href="../recruit/enrolment" disabled>Enrolment</a>
+          <a class="dropdown-item disabled" href="../recruit/enrolment">Enrolment</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="../recruit/messages">Messages</a>
         </div>
       </li>
 
       <li class="nav-item dropdown">
-        <?php if(isset($ADMIN_READ)){ ?>
+      <?php if($ADMIN_READ === 1){ ?>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Administrator
         </a>
@@ -65,10 +65,15 @@ if(isset($_GET['logout'])){
           <a class="dropdown-item" href="../admin/all-applications">All Applications</a>
           <a class="dropdown-item" href="../admin/your-applications">Applications assigned to you</a>
           <a class="dropdown-item" href="../admin/messages">Messages</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="../admin/account-management">Account Management</a>
-          <a class="dropdown-item" href="../admin/role-management">Role Management</a>
-        </div>
+          <?php if($USER_ROLE_MANAGE === 1 || $ROLE_MANAGE === 1){?>
+            <div class="dropdown-divider"></div>
+            <?php if($USER_ROLE_MANAGE === 1){ ?>
+            <a class="dropdown-item" href="../admin/account-management">Account Management</a>
+            <?php } ?>
+            <?php if($ROLE_MANAGE === 1){ ?>
+            <a class="dropdown-item" href="../admin/role-management">Role Management</a>
+            <?php } ?>
+          <?php } ?>
       </li>
       <?php if(isset($_SESSION['loggedin'])){ ?>
         <li class="nav-item">
@@ -101,6 +106,19 @@ if(isset($_GET['logout'])){
     <?php } if(isset($_GET['danger'])){ ?>
     <div class="alert alert-danger" role="alert">
         <?= $_GET['danger']; ?>
+    </div>
+    <?php } ?>
+</div>
+<?php } ?>
+<?php if(isset($success_message) || isset($danger_message)){ ?>
+<div class="m-2">
+    <?php if(isset($success_message)){ ?>
+    <div class="alert alert-success" role="alert">
+        <?= $success_message; ?>
+    </div>
+    <?php } if(isset($danger_message)){ ?>
+    <div class="alert alert-danger" role="alert">
+        <?= $danger_message; ?>
     </div>
     <?php } ?>
 </div>

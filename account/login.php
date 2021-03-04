@@ -25,7 +25,7 @@ if(isset($_POST['login_submit'])){
                     $message = "Password verified.";
                     $_SESSION['loggedin'] = TRUE;
                     $_SESSION['id'] = $id;
-                    header('Location: ./');
+                    header('Location: ../');
                 }else{
                     $message = "Your password is incorrect.";
                 }
@@ -37,7 +37,7 @@ if(isset($_POST['login_submit'])){
     }
 }
 ?>
-<div style="text-align:center;">
+<div class="content" style="text-align:center;">
     <h2>Log into your account!</h2>
     <?php if($message){ ?>
         <div class="alert alert-danger m-2" role="alert">
@@ -47,12 +47,27 @@ if(isset($_POST['login_submit'])){
 
     <form action="#" method="POST">
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="<?= $email ?>" required><br>
+        <input class="form-control" type="email" id="email" name="email" value="<?= $email ?>" required><br>
     
         <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+        <input class="form-control" type="password" id="password" name="password" required><br><br>
         
-        <input type="submit" name="login_submit" value="Login">
+        <input type="text" name="login_submit" value="true" style="display:none">
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
     </form>
 </div>
 <?php include '../layout/footer.php';?>
+<style>
+.content{
+    margin-left:450px;
+    margin-right:450px;
+    margin-top:30px;
+}
+@media(max-width:500px){
+    .content{
+        margin-left:15px!important;
+        margin-right:15px;
+        margin-top:10px;
+    }
+}
+</style>

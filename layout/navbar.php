@@ -16,7 +16,7 @@ if(isset($_GET['logout'])){
     <link rel="icon" href="../assets/icon.png" type="image/png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
@@ -24,7 +24,7 @@ if(isset($_GET['logout'])){
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(47, 153, 138);box-shadow: 0px 5px rgba(47, 153, 138, 0.4);">
-  <a class="navbar-brand" href="./"><img src="https://nathan7471.xyz/img/lAco9/FaKaJOTe11.png/raw" style="max-width:100px;"></a>
+  <a class="navbar-brand" href="../"><img src="https://nathan7471.xyz/img/lAco9/FaKaJOTe11.png/raw" style="max-width:100px;"></a>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -41,21 +41,21 @@ if(isset($_GET['logout'])){
       </li>
 
       <li class="nav-item dropdown">
-      <?php if(isset($APPLICANT_READ)){ ?>
+      <?php if($APPLICANT_READ === 1){ ?>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Application
         </a>
       <?php } ?>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="../recruit/your-applications">Your Applications</a>
-          <a class="dropdown-item disabled" href="../recruit/enrolment" disabled>Enrolment</a>
+          <a class="dropdown-item disabled" href="../recruit/enrolment">Enrolment</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="../recruit/messages">Messages</a>
         </div>
       </li>
 
       <li class="nav-item dropdown">
-        <?php if(isset($ADMIN_READ)){ ?>
+        <?php if($ADMIN_READ === 1){ ?>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Administrator
         </a>
@@ -65,9 +65,15 @@ if(isset($_GET['logout'])){
           <a class="dropdown-item" href="../admin/all-applications">All Applications</a>
           <a class="dropdown-item" href="../admin/your-applications">Applications assigned to you</a>
           <a class="dropdown-item" href="../admin/messages">Messages</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="../admin/account-management">Account Management</a>
-          <a class="dropdown-item" href="../admin/role-management">Role Management</a>
+          <?php if($USER_ROLE_MANAGE === 1 || $ROLE_MANAGE === 1){?>
+            <div class="dropdown-divider"></div>
+            <?php if($USER_ROLE_MANAGE === 1){ ?>
+            <a class="dropdown-item" href="../admin/account-management">Account Management</a>
+            <?php } ?>
+            <?php if($ROLE_MANAGE === 1){ ?>
+            <a class="dropdown-item" href="../admin/role-management">Role Management</a>
+            <?php } ?>
+          <?php } ?>
         </div>
       </li>
       <?php if(isset($_SESSION['loggedin'])){ ?>
@@ -101,6 +107,19 @@ if(isset($_GET['logout'])){
     <?php } if(isset($_GET['danger'])){ ?>
     <div class="alert alert-danger" role="alert">
         <?= $_GET['danger']; ?>
+    </div>
+    <?php } ?>
+</div>
+<?php } ?>
+<?php if(isset($success_message) || isset($danger_message)){ ?>
+<div class="m-2">
+    <?php if(isset($success_message)){ ?>
+    <div class="alert alert-success" role="alert">
+        <?= $success_message; ?>
+    </div>
+    <?php } if(isset($danger_message)){ ?>
+    <div class="alert alert-danger" role="alert">
+        <?= $danger_message; ?>
     </div>
     <?php } ?>
 </div>

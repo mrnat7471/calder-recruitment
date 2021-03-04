@@ -89,4 +89,4 @@ if(isset($_SESSION['id'])){
     }
 }
 </style>
-<?php include '../layoutfooter.php';?>
+<?php include '../layout/footer.php';?>

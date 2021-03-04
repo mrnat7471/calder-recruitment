@@ -15,7 +15,7 @@ if(isset($_GET['search'])){
     $apidata3 = json_encode($emparray3);
     $data3 = json_decode($apidata3);
 }else{
-    header("Location: ./");
+    header("Location: ../");
 }
 ?>
 <div class="mt-2">

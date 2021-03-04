@@ -34,11 +34,22 @@ if(isset($_POST['register_submit'])){
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     $message = "Email is already registered, please login!";
                 } else{
-                    $sql = "INSERT INTO users (firstName, lastName, email, password)
-                            VALUES ('$firstName', '$lastName', '$email', '$password')";
+                    function generateRandomString($length = 25) {
+                        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        $charactersLength = strlen($characters);
+                        $randomString = '';
+                        for ($i = 0; $i < $length; $i++) {
+                            $randomString .= $characters[rand(0, $charactersLength - 1)];
+                        }
+                        return $randomString;
+                    }
+                    $emailverify =  generateRandomString();
+                    $sql = "INSERT INTO users (firstName, lastName, email, password, email_verify)
+                            VALUES ('$firstName', '$lastName', '$email', '$password', '$emailverify')";
 
                             if ($conn->query($sql) === TRUE) {
-                                $complete = TRUE;
+                                require_once '../controllers/email_verify.php';
+                                header("Location: verify");
                             } else {
                                 echo "Error: " . $sql . "<br>" . $conn->error;
                             }
@@ -49,7 +60,7 @@ if(isset($_POST['register_submit'])){
 }
 
 ?>
-<div style="text-align:center;">
+<div class="content" style="text-align:center;">
     <h2>Register for a account!</h2>
     <?php if($message){ ?>
         <div class="alert alert-danger m-2" role="alert">
@@ -58,19 +69,34 @@ if(isset($_POST['register_submit'])){
     <?php } if($complete === FALSE){ ?>
     <form action="#" method="POST">
     <label for="first_name">First name:</label><br>
-    <input type="text" id="first_name" name="first_name" value="<?= $firstName ?>" required><br>
+    <input class="form-control" type="text" id="first_name" name="first_name" value="<?= $firstName ?>" required><br>
     <label for="last_name">Last name:</label><br>
-    <input type="text" id="last_name" name="last_name" value="<?= $lastName ?>" required><br>
+    <input class="form-control" type="text" id="last_name" name="last_name" value="<?= $lastName ?>" required><br>
     <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" value="<?= $email ?>" required><br>
+    <input class="form-control" type="email" id="email" name="email" value="<?= $email ?>" required><br>
     <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" required><br>
+    <input class="form-control" type="password" id="password" name="password" required><br>
     <label for="confirm_password">Confirm Password:</label><br>
-    <input type="password" id="confirm_password" name="confirm_password" required><br><br>
-    <input type="submit" name="register_submit" value="Submit">
+    <input class="form-control" type="password" id="confirm_password" name="confirm_password" required><br><br>
+    <input type="text" name="register_submit" value="Submit" style="display:none">
+    <button class="btn btn-primary my-2 my-sm-0" type="submit">Register</button>
     </form> 
     <?php }else{ ?>
         <p>Thank you for registering!<br>Please check your email to verify your account.</p>
     <?php } ?>
 </div>
 <?php include '../layout/footer.php';?>
+<style>
+.content{
+    margin-left:450px;
+    margin-right:450px;
+    margin-top:30px;
+}
+@media(max-width:500px){
+    .content{
+        margin-left:15px!important;
+        margin-right:15px;
+        margin-top:10px;
+    }
+}
+</style>

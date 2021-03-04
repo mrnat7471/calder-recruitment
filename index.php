@@ -31,7 +31,7 @@ $data3 = json_decode($apidata3);
             <div class="card-body" style="min-height:250px">
                 <h5 class="card-title"><?=$name?></h5>
                 <p class="card-text"><?=$summary?></p>
-                <a href="course?id=<?=$uuid?>" class="btn btn-primary">More Information</a>
+                <a href="courses/course?id=<?=$uuid?>" class="btn btn-primary">More Information</a>
             </div>
         </div>
     </div>
