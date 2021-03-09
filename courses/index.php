@@ -13,6 +13,17 @@ while($row3 =mysqli_fetch_assoc($result3))
 }
 $apidata3 = json_encode($emparray3);
 $data3 = json_decode($apidata3);
+
+$connection = $link;
+$sql2 = "select * from roles";
+$result2 = mysqli_query($connection, $sql2) or die("Error in Selecting " . mysqli_error($connection));
+$emparray2 = array();
+while($row2 =mysqli_fetch_assoc($result2))
+{
+    $emparray2[] = $row2;
+}
+$apidata2 = json_encode($emparray2);
+$data2 = json_decode($apidata2);
 ?>
 <div class="course-background">
     <div class="course-background-text">
@@ -53,6 +64,14 @@ $data3 = json_decode($apidata3);
     </div>
   </div>
   </div>
+    <select name="search_role" class="form-control" style="width:150px;">
+        <?php foreach($data2 as $apidata2){
+            $uuid = $apidata2->uuid;
+            $name = $apidata2->name;
+        ?>
+            <option value="<?=$uuid?>" <?php if($roleSearch == $uuid){ echo 'selected="selected"';}?>><?=$name?></option>
+        <?php } ?>
+    </select>
 </div>
 <?php include '../layout/footer.php';?>
 <style>
