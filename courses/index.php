@@ -15,7 +15,7 @@ $apidata3 = json_encode($emparray3);
 $data3 = json_decode($apidata3);
 
 $connection = $link;
-$sql2 = "select * from courses";
+$sql2 = "select * from thecourses";
 $result2 = mysqli_query($connection, $sql2) or die("Error in Selecting " . mysqli_error($connection));
 $emparray2 = array();
 while($row2 =mysqli_fetch_assoc($result2))
@@ -69,7 +69,7 @@ $data2 = json_decode($apidata2);
             $uuid = $apidata2->uuid;
             $name = $apidata2->name;
         ?>
-            <option value="<?=$uuid?>" <?php if($roleSearch == $uuid){ echo 'selected="selected"';}?>><?=$name?></option>
+            <option value="<?=$uuid?>"><?=$name?></option>
         <?php } ?>
     </select>
 </div>
