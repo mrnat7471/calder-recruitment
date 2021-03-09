@@ -7,14 +7,14 @@ include 'navbar.php';
     </div>
 </div>
 <div class="container">
-<div class="row" style="width:82%;margin:auto;">
+    <div class="row" style="width:82%;margin:auto;">
       <div class="col-md-4 mt-2">
         <div class="card mb-2 mt-2" style="width: 18rem;">
             <img class="card-img-top" height=190px style="object-fit:cover;" src="../assets/card.jpg" alt="Card image cap">
             <div class="card-body" style="min-height:250px">
                 <h5 class="card-title">Level 3 Extended Diploma in Computing</h5>
                 <p class="card-text">You’d like to program a voice-based application that lets people do their banking through their Amazon Echo?</p>
-                <a href="course?id=1" class="btn btn-primary">More Information</a>
+                <a href="courses/course?id=1" class="btn btn-primary">More Information</a>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@ include 'navbar.php';
             <div class="card-body" style="min-height:250px">
                 <h5 class="card-title">Computing and IT – Level 1</h5>
                 <p class="card-text">BTEC Level 1 Certificate for IT Users & Work Skills</p>
-                <a href="course?id=2" class="btn btn-primary">More Information</a>
+                <a href="courses/course?id=2" class="btn btn-primary">More Information</a>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@ include 'navbar.php';
             <div class="card-body" style="min-height:250px">
                 <h5 class="card-title">Computer Systems & Networks – Level 3</h5>
                 <p class="card-text">BTEC Level 3 National Extended Diploma in Computer Systems and Data Analysis (Business Information Systems)</p>
-                <a href="course?id=3" class="btn btn-primary">More Information</a>
+                <a href="courses/course?id=3" class="btn btn-primary">More Information</a>
             </div>
         </div>
     </div>

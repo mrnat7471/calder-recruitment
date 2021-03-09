@@ -37,7 +37,7 @@ $data3 = json_decode($apidata3);
             <div class="card-body" style="min-height:250px">
                 <h5 class="card-title">Computing and IT – Level 1</h5>
                 <p class="card-text">BTEC Level 1 Certificate for IT Users & Work Skills</p>
-                <a href="courses/course?id=2" class="btn btn-primary">More Information</a>
+                <a href="course?id=2" class="btn btn-primary">More Information</a>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@ $data3 = json_decode($apidata3);
             <div class="card-body" style="min-height:250px">
                 <h5 class="card-title">Computer Systems & Networks – Level 3</h5>
                 <p class="card-text">BTEC Level 3 National Extended Diploma in Computer Systems and Data Analysis (Business Information Systems)</p>
-                <a href="courses/course?id=3" class="btn btn-primary">More Information</a>
+                <a href="course?id=3" class="btn btn-primary">More Information</a>
             </div>
         </div>
     </div>
