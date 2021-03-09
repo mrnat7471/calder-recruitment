@@ -1,18 +1,5 @@
 <?php 
 include 'navbar.php';
-require_once "controllers/config.php";
-
-$connection = $link;
-//ORDER BY RAND() 
-$sql3 = "select * from courses LIMIT 3";
-$result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
-$emparray3 = array();
-while($row3 =mysqli_fetch_assoc($result3))
-{
-    $emparray3[] = $row3;
-}
-$apidata3 = json_encode($emparray3);
-$data3 = json_decode($apidata3);
 ?>
 <div class="home-background">
     <div class="home-background-text">
@@ -21,7 +8,21 @@ $data3 = json_decode($apidata3);
 </div>
 <div class="container">
   <div class="row" style="width:82%;margin:auto;">
-  <?php foreach($data3 as $apidata3){
+  <?php
+  require_once "controllers/config.php";
+
+  $connection = $link;
+  //ORDER BY RAND() 
+  $sql3 = "select * from courses LIMIT 3";
+  $result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
+  $emparray3 = array();
+  while($row3 =mysqli_fetch_assoc($result3))
+  {
+      $emparray3[] = $row3;
+  }
+  $apidata3 = json_encode($emparray3);
+  $data3 = json_decode($apidata3);
+  foreach($data3 as $apidata3){
     $name = $apidata3->name;
     $summary = $apidata3->summary;
     $uuid = $apidata3->uuid;
