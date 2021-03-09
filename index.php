@@ -3,7 +3,8 @@ include 'navbar.php';
 require_once "controllers/config.php";
 
 $connection = $link;
-$sql3 = "select * from courses ORDER BY RAND() LIMIT 3";
+//ORDER BY RAND() 
+$sql3 = "select * from courses LIMIT 3";
 $result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
 $emparray3 = array();
 while($row3 =mysqli_fetch_assoc($result3))
@@ -25,14 +26,13 @@ $data3 = json_decode($apidata3);
     $summary = $apidata3->summary;
     $uuid = $apidata3->uuid;
     $image = $apidata3->image; ?>
-    <?=$name?>
     <div class="col-md-4 mt-2">
-        <div class="card mt-2 mb-2" style="width: 18rem;">
+        <div class="card mb-2 mt-2" style="width: 18rem;">
             <img class="card-img-top" height=190px style="object-fit:cover;" src="<?=$image?>" alt="Card image cap">
             <div class="card-body" style="min-height:250px">
                 <h5 class="card-title"><?=$name?></h5>
                 <p class="card-text"><?=$summary?></p>
-                <a href="courses/course?id=<?=$uuid?>" class="btn btn-primary">More Information</a>
+                <a href="course?id=<?=$uuid?>" class="btn btn-primary">More Information</a>
             </div>
         </div>
     </div>

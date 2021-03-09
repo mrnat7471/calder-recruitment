@@ -21,7 +21,7 @@ if(isset($_SESSION['id'])){
         $connection = $link;
         $roleID = $apidata->uuid;
         $roleName = $apidata->name;?>
-        <?php if($roleID == 0 || $roleID == 1){ ?>
+        <?php if($roleID == 0 || $roleID == 1 || $roleID == 18){ ?>
             <h5><?=$roleName?></h5> 
         <?php }else{ ?>
             <h5><?=$roleName?> (<a href="manage-role?id=<?=$roleID?>">Manage</a>)</h5> 
