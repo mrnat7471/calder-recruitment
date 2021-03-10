@@ -1,24 +1,29 @@
 <?php include '../layout/navbar.php';?>
 <div class="content">
-    <h5><b>Your Messages</b></h5>
+    <h5><b>Your Application</b></h5>
+
+    <h6>Qualifications</h6>
     <table class="table">
         <thead>
             <tr>
-            <th scope="col">Date/Time</th>
             <th scope="col">Subject</th>
-            <th scope="col">View</th>
+            <th scope="col">Qualifications</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Year</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <th scope="row">18/03/2020 16:24:04</th>
-                <td>Interview Invitation</td>
-                <td><a href="interview"><button class="btn btn-outline-dark my-2 my-sm-0" type="submit">View</button></a></td>
+                <th scope="row">AQA Level 1/Level 2 GCSE (9-1) in English Language</th>
+                <td>GCSE (9 to 1)</td>
+                <td>4</td>
+                <td>2019</td>
             </tr>
             <tr>
-                <th scope="row">18/03/2019 16:24:04</th>
-                <td>Induction Information</td>
-                <td><a href="view-message?id=2"><button class="btn btn-outline-dark my-2 my-sm-0" type="submit">View</button></a></td>
+                <th scope="row">AQA Level 1/Level 2 GCSE (9-1) in Combined Science: Trilogy</th>
+                <td>GCSE (9 to 1)</td>
+                <td>44 (P)</td>
+                <td>2021</td>
             </tr>
         </tbody>
     </table>

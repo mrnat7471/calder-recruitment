@@ -1,7 +1,7 @@
 <?php
-define('DB_SERVER', 'localhost:3306'); #localhost:3306
-define('DB_USERNAME', 'Nathan'); #Nathan
-define('DB_PASSWORD', 'b6_08yDb'); #b6_08yDb
+define('DB_SERVER', 'localhost'); #localhost:3306
+define('DB_USERNAME', 'root'); #Nathan
+define('DB_PASSWORD', ''); #b6_08yDb
 define('DB_NAME', 'recruitment');
 
 $servername = DB_SERVER;
@@ -12,6 +12,7 @@ $dbname = DB_NAME;
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+$conn2 = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

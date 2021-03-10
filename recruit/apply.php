@@ -41,6 +41,10 @@ if(isset($_SESSION['id'])){
     these out below. If they are incorrect, please click <a href="account">here</a>
     and edit and save the details to make sure they are correct.</p>
     <form action="#" method="POST" class="mb-3">
+        <h5><b>Personal Details:</b></h5>
+        <label for="title">Title:</label><br>
+        <input type="text" class="form-control" id="title" name="title" required>
+
         <label for="firstName">First Name:</label><br>
         <input type="text" class="form-control" id="firstName" name="firstName" value="<?= $firstName ?>" required disabled>
 
@@ -54,10 +58,20 @@ if(isset($_SESSION['id'])){
         <input type="email" class="form-control" id="email" name="email" value="<?= $email ?>" required disabled>
         <p style="font-size:13px;">This email has been verified. To change, visit your account page.</p>
 
-        <p>That is the first section complete but we need a few more personal details to continue.</p>
-
         <label for="NInumber">National Insurance Number:</label><br>
         <input type="text" class="form-control" id="NInumber" name="NInumber" required>
+
+        <label for="sex">Sex:</label><br>
+        <input type="text" class="form-control" id="sex" name="sex" required>
+
+        <label for="DOB">Date of Birth:</label><br>
+        <input type="date" id="myDate" name="DOB" required><br>
+
+        <label for="mobile">Mobile:</label><br>
+        <input type="text" class="form-control" id="mobile" name="mobile" required>
+
+        <br><p>That is the first section complete but we need a few more personal details to continue.</p>
+        <h5><b>Correspondence Address:</b></h5>
 
         <label for="oneLineAddress">1st Line Address:</label><br>
         <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
@@ -69,8 +83,192 @@ if(isset($_SESSION['id'])){
         <input type="text" class="form-control" id="postcode" name="postcode" required>
 
         <label for="town">Town:</label><br>
-        <input type="text" class="form-control" id="town" name="town" required>
+        <input type="text" class="form-control" id="town" name="town" required><br>
+
+
+        <h5><b>Equal Opportunities:</b></h5>
+        <label for="oneLineAddress">Of which country are you a national?</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+
+        <label for="ethnicity">Ethnicity:</label><br>
+        <input type="text" class="form-control" id="ethnicity" name="ethnicity" required>
+
+        <label for="postcode">Resident in the UK/EU for 3 years:</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label for="town">Criminal Conviction:</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br>
+
+
+        <h5><b>Support Needs:</b></h5>
+        <label for="oneLineAddress">Learning Difficulty or Disability:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+
+        <label for="ethnicity">Have you ever been fostered, adopted or placed in a children's home?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label for="postcode">Do you care for someone else's health or wellbeing needs?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label for="town">Interview Assistance Required? </label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br>
         
+        <p>Final section...POG. We need to know what you been up to during secondary school. Let us know what qualifications you have
+        or going to get below.</p>
+        <h5><b>List of Qualifications:</b></h5>
+
+        <h6>1st GCSE:</h6>
+        <label for="oneLineAddress">Subject:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Qualifications:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Grade:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="postcode">Is this a predicted grade?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <label for="postcode">Year Achieved?</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required><br><br>
+
+        <h6>2nd GCSE:</h6>
+        <label for="oneLineAddress">Subject:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Qualifications:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Grade:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="postcode">Is this a predicted grade?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <label for="postcode">Year Achieved?</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required><br><br>
+
+        <h6>3rd GCSE:</h6>
+        <label for="oneLineAddress">Subject:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Qualifications:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Grade:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="postcode">Is this a predicted grade?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <label for="postcode">Year Achieved?</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required><br><br>
+
+        <h6>4th GCSE:</h6>
+        <label for="oneLineAddress">Subject:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Qualifications:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Grade:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="postcode">Is this a predicted grade?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <label for="postcode">Year Achieved?</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required><br><br>
+
+        <h6>5th GCSE:</h6>
+        <label for="oneLineAddress">Subject:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Qualifications:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Grade:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="postcode">Is this a predicted grade?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <label for="postcode">Year Achieved?</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required><br><br>
+
+        <h6>6th GCSE:</h6>
+        <label for="oneLineAddress">Subject:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Qualifications:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Grade:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="postcode">Is this a predicted grade?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <label for="postcode">Year Achieved?</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required><br><br>
+
+        <h6>7th GCSE:</h6>
+        <label for="oneLineAddress">Subject:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Qualifications:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Grade:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="postcode">Is this a predicted grade?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <label for="postcode">Year Achieved?</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required><br><br>
+
+        <h6>8th GCSE:</h6>
+        <label for="oneLineAddress">Subject:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Qualifications:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Grade:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="postcode">Is this a predicted grade?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <label for="postcode">Year Achieved?</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required><br><br>
+
+        <h6>9th GCSE:</h6>
+        <label for="oneLineAddress">Subject:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Qualifications:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="oneLineAddress">Grade:</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required>
+        <label for="postcode">Is this a predicted grade?</label><br>
+        <select name="cars" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <label for="postcode">Year Achieved?</label><br>
+        <input type="text" class="form-control" id="oneLineAddress" name="oneLineAddress" required><br>
+
+        <p>Are you all ready with your application? Submit it below, we can't wait to hear from you.</p>
+
         <br><button class="btn btn-primary my-2 my-sm-0" type="submit">Apply</button>
     </form>
 </div>

@@ -43,13 +43,15 @@ if(isset($_GET['logout'])){
       <li class="nav-item dropdown">
       <?php if($APPLICANT_READ === 1){ ?>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Application
+          Applications
         </a>
       <?php } ?>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="../recruit/your-applications">Your Applications</a>
           <a class="dropdown-item disabled" href="../recruit/enrolment">Enrolment</a>
+          <a class="dropdown-item" href="../recruit/evidence">Evidence</a>
           <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="../recruit/interview">Interview</a>
           <a class="dropdown-item" href="../recruit/messages">Messages</a>
         </div>
       </li>
