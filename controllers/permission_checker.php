@@ -6,6 +6,7 @@ $roleID = 0;
 $ADMIN_READ = 0;
 $APPLICANT_READ = 0;
 $ROLE_MANAGE = 0;
+$ROLE_MANAGE_2 = 0;
 $USER_ROLE_MANAGE = 0;
 $PROGRESS = 0;
 
@@ -25,5 +26,7 @@ if(isset($_SESSION['id'])){
     $stmt->bind_result($uuid, $roleID, $ADMIN_READ, $APPLICANT_READ, $ROLE_MANAGE, $USER_ROLE_MANAGE);
     $stmt->fetch();
     $stmt->close();
+
+    $ROLE_MANAGE_2 = $ROLE_MANAGE;
 }
 ?>

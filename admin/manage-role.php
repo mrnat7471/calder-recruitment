@@ -87,7 +87,7 @@ $stmt->close();
 ?>
 
 <div class="role-content">
-<?php if($ROLE_MANAGE == 1){ ?>
+<?php if($ROLE_MANAGE_2 == 1){ ?>
   <h5><b>Role Management:</b></h5>
     <div class="row">
       <div class="col">
