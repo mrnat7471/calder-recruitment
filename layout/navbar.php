@@ -98,10 +98,10 @@ if(isset($_GET['logout'])){
       </li>
       <?php } ?>
     </ul>
-    <form class="form-inline my-2 my-lg-0 search" action="../courses/search">
+    <!--<form class="form-inline my-2 my-lg-0 search" action="../courses/search">
       <input class="form-control mr-sm-2" type="search" placeholder="Search for a course" name="search" aria-label="Search" required>
       <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form>-->
   </div>
 </nav>
 <?php if(isset($_GET['success']) || isset($_GET['danger'])){ ?>
