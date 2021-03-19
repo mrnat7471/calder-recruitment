@@ -87,6 +87,7 @@ $stmt->close();
 ?>
 
 <div class="role-content">
+<?php if($ROLE_MANAGE == 1){ ?>
   <h5><b>Role Management:</b></h5>
     <div class="row">
       <div class="col">
@@ -104,7 +105,7 @@ $stmt->close();
         <input type="text" name="delete_id" value="<?=$roleID?>" style="display:none;">
         <button class="btn btn-primary my-2 my-sm-0" type="submit" value="Delete">Delete</button>
       </form>
-      </div>
+      </div>  
     </div>
   
 
@@ -149,6 +150,9 @@ $stmt->close();
     </div>
     <br><br><button class="btn btn-primary my-2 my-sm-0" type="submit" value="perm_role_update">Update</button>
   </form>
+  <?php }else{ ?>
+  <h6>You don't have permission to go there. </h6>
+<?php }  ?>
 </div>
 
 <?php include '../layout/footer.php';?>

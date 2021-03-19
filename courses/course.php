@@ -14,7 +14,7 @@ if(isset($_GET['id'])){
     header("Location: ./");
 }
 ?>
-<div style="margin-left:15px;margin-right:15px;">
+<div class="content">
     <h4 style="text-align:center;margin-top:15px;"><b><?= $courseName ?></b></h4>
     <h6 style="padding-bottom:5px;border-bottom: 5px solid rgb(47, 153, 138);"><?= $department ?></h6>
     <p style="padding-bottom:5px;border-bottom: 5px solid rgb(47, 153, 138);"><?= $summary ?></p>
@@ -26,3 +26,17 @@ if(isset($_GET['id'])){
     <?php } ?>
 </div>
 <?php include '../layout/footer.php';?>
+<style>
+.content{
+    margin-left:250px;
+    margin-right:250px;
+    margin-top:30px;
+}
+@media(max-width:500px){
+    .content{
+        margin-left:15px!important;
+        margin-right:15px;
+        margin-top:10px;
+    }
+}
+</style>

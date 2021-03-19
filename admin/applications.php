@@ -1,5 +1,17 @@
-<?php include '../layout/navbar.php';?>
+<?php include '../layout/navbar.php';
+$connection = $link;
+$sql3 = "select * from applications";
+$result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
+$emparray3 = array();
+while($row3 =mysqli_fetch_assoc($result3))
+{
+    $emparray3[] = $row3;
+}
+$apidata3 = json_encode($emparray3);
+$data3 = json_decode($apidata3);
+?>
 <div class="content">
+<?php if($APPLICANT_READ == 1){ ?>
     <h5><b>Applications</b></h5>
     <table class="table">
         <thead>
@@ -12,24 +24,41 @@
             </tr>
         </thead>
         <tbody>
+            <?php foreach($data3 as $apidata3){
+            $uuid = $apidata3->uuid;
+            $course_id = $apidata3->course_id;
+            $profile_id = $apidata3->profile_id;
+            $staff_id = $apidata3->staff_id; 
+            $stmt = $link->prepare('SELECT firstName, lastName FROM users WHERE uuid = ?');
+            $stmt->bind_param('i', $profile_id);
+            $stmt->execute();
+            $stmt->bind_result($firstName, $lastName);
+            $stmt->fetch();
+            $stmt->close();
+
+            $stmt = $link->prepare('SELECT name FROM courses WHERE uuid = ?');
+            $stmt->bind_param('i', $course_id);
+            $stmt->execute();
+            $stmt->bind_result($course_name);
+            $stmt->fetch();
+            $stmt->close();
+
+            if($staff_id == 0){
+            ?>
             <tr>
-                <th scope="row">1</th>
-                <td>Raymond Holt</td>
-                <td>Level 3 Computing</td>
-                <td>Under Review</td>
-                <td><button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Claim</button>
-                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">View</button></td>
+                <th scope="row"><?=$uuid?></th>
+                <td><?=$firstName?> <?= $lastName?></td>
+                <td><?=$course_name?></td>
+                <td>Claimable</td>
+                <td><a href="./view-application?claim=<?=$uuid?>"><button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Claim</button></a>
+                <a href="./view-application?id=<?=$uuid?>"><button class="btn btn-outline-dark my-2 my-sm-0" type="submit">View</button></a></td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Rosa Dias</td>
-                <td>Level 2 IT</td>
-                <td>Interview Stage</td>
-                <td><button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Claim</button>
-                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">View</button></td>
-            </tr>
+        <?php }} ?>
         </tbody>
     </table>
+<?php }else{ ?>
+  <h6>You don't have permission to go there. </h6>
+<?php }  ?>  
 </div>
 <?php include '../layout/footer.php';?>
 <style>

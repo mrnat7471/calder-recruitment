@@ -9,8 +9,4 @@ if(isset($_SESSION['id'])){
     $stmt->bind_result($verified);
     $stmt->fetch();
     $stmt->close();
-
-    if($verified === 0){
-        header("Location: ./verify");
-    }
 }

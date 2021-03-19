@@ -82,6 +82,7 @@ if(isset($_GET['search'])){
 }
 ?>
 <div class="role-content">
+<?php if($USER_ROLE_MANAGE == 1){ ?>
 <div class="row">
     <div class="col">
         <form class="form-inline my-2 my-lg-0 search">
@@ -171,6 +172,9 @@ if(isset($_GET['search'])){
 <?php } ?>
     </tbody>
 </table>
+<?php }else{ ?>
+  <h6>You don't have permission to go there. </h6>
+<?php }  ?>  
 </div>
 
 <?php include '../layout/footer.php';?>

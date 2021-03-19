@@ -1,5 +1,6 @@
 <?php include '../layout/navbar.php'; ?>
 <div class="role-content">
+<?php if($ROLE_MANAGE == 1){ ?>
     <h5><b>Role Management:</b> <a href="create-role"><button class="btn btn-primary my-2 my-sm-0">Create Role</button></a></h5>
 <?php
 require_once "../controllers/config.php";
@@ -32,6 +33,9 @@ if(isset($_SESSION['id'])){
 }
 
 ?>
+<?php }else{ ?>
+  <h6>You don't have permission to go there. </h6>
+<?php }  ?>  
 </div>
 <?php include '../layout/footer.php';?>
 <style>

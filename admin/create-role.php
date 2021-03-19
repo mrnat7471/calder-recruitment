@@ -56,6 +56,7 @@ if(isset($post)){
 include '../layout/navbar.php'; ?>
 
 <div class="role-content">
+<?php if($ROLE_MANAGE == 1){ ?>
   <h5><b>Role Management:</b></h5>
       <form method="POST">
     <div class="row">
@@ -66,6 +67,9 @@ include '../layout/navbar.php'; ?>
     </div>
     <br><button class="btn btn-primary my-2 my-sm-0" type="submit">Create</button>
   </form>
+<?php }else{ ?>
+  <h6>You don't have permission to go there. </h6>
+<?php }  ?>  
 </div>
 
 <?php include '../layout/footer.php';?>

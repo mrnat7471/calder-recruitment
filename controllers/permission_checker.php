@@ -7,14 +7,15 @@ $ADMIN_READ = 0;
 $APPLICANT_READ = 0;
 $ROLE_MANAGE = 0;
 $USER_ROLE_MANAGE = 0;
+$PROGRESS = 0;
 
 if(isset($_SESSION['id'])){
     $id = $_SESSION['id'];
 
-    $stmt = $link->prepare('SELECT user_role FROM users WHERE uuid = ?');
+    $stmt = $link->prepare('SELECT user_role, progress FROM users WHERE uuid = ?');
     $stmt->bind_param('i', $id);
     $stmt->execute();
-    $stmt->bind_result($userRole);
+    $stmt->bind_result($userRole, $PROGRESS);
     $stmt->fetch();
     $stmt->close();
 

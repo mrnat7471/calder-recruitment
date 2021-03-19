@@ -46,6 +46,8 @@ include 'navbar.php';
 .home-background{
     background-image: url("assets/banner.jpg");
     background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height:250px;
 }
 .home-background-text{
