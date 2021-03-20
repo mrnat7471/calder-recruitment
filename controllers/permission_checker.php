@@ -1,5 +1,5 @@
 <?php
-
+// Checks the login users role and have what permissions they have.
 require_once "config.php";
 $uuid = 0;
 $roleID = 0;

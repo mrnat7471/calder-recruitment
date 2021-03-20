@@ -3,6 +3,7 @@ include '../layout/navbar.php';
 require_once "../controllers/config.php";
 
 if(isset($_GET['id'])){
+    // Grabs course information from selected course ID.
     $id = $_GET['id'];
     $stmt = $link->prepare('SELECT uuid, name, department, summary, content FROM courses WHERE uuid = ?');
     $stmt->bind_param('i', $id);

@@ -3,6 +3,7 @@
 session_start(); 
 require_once '../controllers/permission_checker.php';
 
+// Destroys session when logout button is pushed.
 if(isset($_GET['logout'])){
     session_unset();
     session_destroy();

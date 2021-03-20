@@ -1,6 +1,8 @@
 <?php include '../layout/navbar.php';
 
 if(isset($_SESSION['id'])){
+
+    // Grabs their application details.
     $id = $_SESSION['id'];
     $stmt = $link->prepare('SELECT * FROM applications WHERE profile_id = ?');
     $stmt->bind_param('i', $id);
@@ -10,6 +12,7 @@ if(isset($_SESSION['id'])){
     $stmt->fetch();
     $stmt->close();
 
+    // Grabs the course name.
     $stmt = $link->prepare('SELECT name FROM courses WHERE uuid = ?');
     $stmt->bind_param('i', $course_id);
     $stmt->execute();
@@ -17,6 +20,7 @@ if(isset($_SESSION['id'])){
     $stmt->fetch();
     $stmt->close();
 
+    // Grabs user's name.
     $stmt = $link->prepare('SELECT firstName, lastName, email FROM users WHERE uuid = ?');
     $stmt->bind_param('i', $profile_id);
     $stmt->execute();
@@ -24,8 +28,8 @@ if(isset($_SESSION['id'])){
     $stmt->fetch();
     $stmt->close();
 
+    // Grabs user's qualifications
     $connection = $link;
-    //ORDER BY RAND() 
     $sql3 = "SELECT * from qualifications";
     $result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
     $emparray3 = array();

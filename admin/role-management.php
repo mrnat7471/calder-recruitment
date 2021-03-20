@@ -6,6 +6,7 @@
 require_once "../controllers/config.php";
 
 if(isset($_SESSION['id'])){
+    // Grabs all roles from roles database and outputs JSON array.
     $connection = $link;
     $sql = "select uuid, name from roles";
     $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
@@ -28,10 +29,7 @@ if(isset($_SESSION['id'])){
             <h5><?=$roleName?> (<a href="manage-role?id=<?=$roleID?>">Manage</a>)</h5> 
         <?php } ?>
     <?php }
-}else{
-    header();
 }
-
 ?>
 <?php }else{ ?>
   <h6>You don't have permission to go there. </h6>

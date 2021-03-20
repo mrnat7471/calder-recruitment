@@ -4,7 +4,9 @@ require_once "../controllers/config.php";
 require_once '../controllers/email_verification.php';
 
 $qual = 0;
+// Checks they are logged in.
 if(isset($_SESSION['id'])){
+        // Gets users details.
         $accountid = $_SESSION['id'];
         $stmt = $link->prepare('SELECT firstName, lastName, email FROM users WHERE uuid = ?');
         $stmt->bind_param('i', $id);
@@ -12,7 +14,9 @@ if(isset($_SESSION['id'])){
         $stmt->bind_result($firstName, $lastName, $email);
         $stmt->fetch();
         $stmt->close();
+    // Checks a course has been selected.
     if(isset($_GET['id'])){
+        // Gets course Name.
         $courseID = $_GET['id'];
         $stmt2 = $link->prepare('SELECT name FROM courses WHERE uuid = ?');
         $stmt2->bind_param('i', $courseID);
@@ -27,6 +31,7 @@ if(isset($_SESSION['id'])){
     header("Location: ../?danger=Please Login.");
 }
 if(isset($_POST['title']) || isset($_POST['firstName'])){
+    // Adds application to application table.
     $id = $_SESSION['id'];
     $course_id = $_GET['id'];
 
@@ -75,7 +80,7 @@ if(isset($_POST['title']) || isset($_POST['firstName'])){
 }
 
 if(isset($_POST['subject']) || isset($_POST['qualification']) || isset($_POST['grade']) || isset($_POST['pred']) || isset($_POST['year'])){
-    
+    // Adds qualifications to table.
     $id = $_SESSION['id'];
 
     $subject = $_POST['subject'];

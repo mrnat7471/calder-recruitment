@@ -1,6 +1,7 @@
 <?php include '../layout/navbar.php';
 
 if(isset($_POST['subject'])){
+    // Grabs receiver's firstName, lastName, email.
     $receiver = $_POST['receiver'];
     $stmt = $link->prepare('SELECT firstName, lastName, email FROM users WHERE uuid = ?');
     $stmt->bind_param('i', $receiver);
@@ -10,6 +11,7 @@ if(isset($_POST['subject'])){
     $stmt->close(); 
     $sender = $_SESSION['id'];
 
+    // Grabs staff's firstName, lastName
     $stmt = $link->prepare('SELECT firstName, lastName FROM users WHERE uuid = ?');
     $stmt->bind_param('i', $sender);
     $stmt->execute();
@@ -19,14 +21,13 @@ if(isset($_POST['subject'])){
     $subject = $_POST['subject'];
     $content = $_POST['content'];
 
+    //Sends email to the selected user.
     require_once '../vendor/autoload.php';
 
-    // Create the Transport
     $transport = (new Swift_SmtpTransport('fw-cpanel01.fyfeweb.com', 465, 'ssl'))
     ->setUsername('website@reachradio.co.uk')
     ->setPassword('[&Rb_y8&x?oP');
 
-    // Create the Mailer using your created Transport
     $mailer = new Swift_Mailer($transport);
 
         global $mailer;
@@ -201,6 +202,7 @@ if(isset($_POST['subject'])){
         // Send the message
         $emailresult = $mailer->send($message);
 
+        // Add message to messages table for future access via message page.
         $sql = "INSERT INTO messages (receiver, sender, subject, content) VALUES ('$receiver', '$sender', '$subject', '$content')";
 
         if ($conn->query($sql) === TRUE) {

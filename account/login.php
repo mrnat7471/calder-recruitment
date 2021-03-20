@@ -4,6 +4,7 @@ include '../layout/navbar.php';
 $message = NULL;
 $email = "";
 
+//Checks the email and password match a account the starts a session for the login user.
 if(isset($_POST['login_submit'])){
     $email = $_POST['email'];
 
@@ -53,7 +54,7 @@ if(isset($_POST['login_submit'])){
         <input class="form-control" type="password" id="password" name="password" required><br><br>
         
         <input type="text" name="login_submit" value="true" style="display:none">
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button><br><br>
     </form>
 </div>
 <?php include '../layout/footer.php';?>

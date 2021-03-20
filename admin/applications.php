@@ -1,5 +1,6 @@
 <?php include '../layout/navbar.php';
 $connection = $link;
+// Grabs all applications from applications table and outputs as a JSON array.
 $sql3 = "select * from applications";
 $result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
 $emparray3 = array();
@@ -29,6 +30,7 @@ $data3 = json_decode($apidata3);
             $course_id = $apidata3->course_id;
             $profile_id = $apidata3->profile_id;
             $staff_id = $apidata3->staff_id; 
+            // Grabs user's firstName, lastName.
             $stmt = $link->prepare('SELECT firstName, lastName FROM users WHERE uuid = ?');
             $stmt->bind_param('i', $profile_id);
             $stmt->execute();
@@ -36,6 +38,7 @@ $data3 = json_decode($apidata3);
             $stmt->fetch();
             $stmt->close();
 
+            // Grabs course Name.
             $stmt = $link->prepare('SELECT name FROM courses WHERE uuid = ?');
             $stmt->bind_param('i', $course_id);
             $stmt->execute();
@@ -43,6 +46,7 @@ $data3 = json_decode($apidata3);
             $stmt->fetch();
             $stmt->close();
 
+            // Only displays application if unclaimed.
             if($staff_id == 0){
             ?>
             <tr>

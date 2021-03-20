@@ -5,6 +5,7 @@ require_once "../controllers/config.php";
 $search = "";
 $roleSearch = "";
 
+// Updates the selected accounts role.
 if(isset($_POST['role'])){
     $setrole = $_POST['role'];
     $useruuid = $_POST['id'];
@@ -18,6 +19,7 @@ if(isset($_POST['role'])){
 $conn->close();
 }
 
+// Deletes selected account.
 if(isset($_GET['delete_account'])){
     $useruuid = $_GET['id'];
     $sql = "DELETE FROM users WHERE uuid=$useruuid";
@@ -31,6 +33,7 @@ if(isset($_GET['delete_account'])){
 $conn->close();
 }
 
+// Gets a array of roles from roles table.
 $connection = $link;
 $sql2 = "select * from roles";
 $result2 = mysqli_query($connection, $sql2) or die("Error in Selecting " . mysqli_error($connection));
@@ -42,6 +45,7 @@ while($row2 =mysqli_fetch_assoc($result2))
 $apidata2 = json_encode($emparray2);
 $data2 = json_decode($apidata2);
 
+// Search for user by lastName
 if(isset($_GET['search'])){
     $connection = $link;
     $search = $_GET['search'];
@@ -54,7 +58,8 @@ if(isset($_GET['search'])){
     }
     $apidata3 = json_encode($emparray3);
     $data3 = json_decode($apidata3);
-    
+
+    //Search for users by role
 }elseif(isset($_GET['search_role'])){
     $connection = $link;
     $roleSearch = $_GET['search_role'];
@@ -67,7 +72,8 @@ if(isset($_GET['search'])){
     }
     $apidata3 = json_encode($emparray3);
     $data3 = json_decode($apidata3);
-    
+
+    //Gets all users.
 }else{
     $connection = $link;
     $sql3 = "select * from users";

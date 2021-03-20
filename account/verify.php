@@ -2,6 +2,8 @@
 if(isset($_GET['code'])){
     $code = $_GET['code'];
 }
+
+// Grabs password from form. Checks to see if it matches account then verifies email.
 if(isset($_POST['code'])){
     $code = $_POST['code'];
     require_once '../controllers/config.php';

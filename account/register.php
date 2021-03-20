@@ -8,6 +8,7 @@ $error = 0;
 $message = NULL;
 $complete = FALSE;
 
+// Grabs form details, checks to see if there an email that matches if there is, doesn't create a account if there isn't create new account.
 if(isset($_POST['register_submit'])){
     require_once '../controllers/config.php';
     $firstName = $_POST['first_name'];

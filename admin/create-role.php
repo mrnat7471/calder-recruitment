@@ -4,6 +4,7 @@ require_once "../controllers/config.php";
 $roleName = "";
 
 if(isset($_POST['role_name'])){
+  // Adds new role to roles table.
   $roleName = $_POST['role_name'];
   $roleslug = strtoupper($roleName);
 
@@ -21,6 +22,7 @@ if(isset($_POST['role_name'])){
 }
 
 if(isset($post)){
+  // Checks permission given to role.
   if(isset($_POST['ADMIN_READ'])){
     $ADMIN_READ = 1;
   }else{
@@ -42,6 +44,7 @@ if(isset($post)){
     $USER_ROLE_MANAGE = 0;
   }
 
+  // Adds the roles permission to the role permission table.
   $sql = "INSERT INTO roles_permissions (role_id, ADMIN_READ, APPLICANT_READ, ROLE_MANAGE, USER_ROLE_MANAGE)
   VALUES ('$roleUUID', '$ADMIN_READ', '$APPLICANT_READ', '$ROLE_MANAGE', '$USER_ROLE_MANAGE')";
 

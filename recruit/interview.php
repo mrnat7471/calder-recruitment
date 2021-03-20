@@ -3,6 +3,7 @@
 $id = $_SESSION['id'];
 $date_1 = "";
 
+// Grabs interview information of user.
 $stmt = $link->prepare('SELECT * FROM interviews WHERE profile_id = ?');
 $stmt->bind_param('i', $id);
 $stmt->execute();
@@ -10,6 +11,7 @@ $stmt->bind_result($uuid, $profile_id, $staff_id, $date_1);
 $stmt->fetch();
 $stmt->close();
 
+// Grabs user's information.
 $stmt = $link->prepare('SELECT firstName, lastName, email, verified, user_role FROM users WHERE uuid = ?');
 $stmt->bind_param('i', $id);
 $stmt->execute();
@@ -17,6 +19,7 @@ $stmt->bind_result($firstName, $lastName, $email, $verified, $name);
 $stmt->fetch();
 $stmt->close();
 
+// Grabs staff member's information
 $stmt = $link->prepare('SELECT firstName, lastName FROM users WHERE uuid = ?');
 $stmt->bind_param('i', $staff_id);
 $stmt->execute();

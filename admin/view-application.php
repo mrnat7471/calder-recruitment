@@ -1,6 +1,7 @@
 <?php
 include '../layout/navbar.php';
 if(isset($_GET['claim'])){
+    // Claims the application by setting progress to 1 (Claimed) and adding their account ID to the application.
     $id = $_GET['claim'];
     $staffid = $_SESSION['id'];
     $sql = "UPDATE applications SET staff_id=$staffid, progress='1' WHERE uuid=$id";
@@ -11,14 +12,16 @@ if(isset($_GET['claim'])){
     }
 }
 if(isset($_GET['offer'])){
+    // When an interview is complete, the staff member can check offer given and it will sent application to progress 3 (Offer Given).
     $id = $_GET['id'];
     $sql = "UPDATE applications SET progress='3' WHERE uuid=$id";
     if ($conn->query($sql) === TRUE) {
-        $success_message = "Application claimed.";
+        
     } else {
     echo "Error:" . $conn->error;
     }
 
+    // Grabs application information for selected application.
     $stmt = $link->prepare('SELECT * FROM applications WHERE uuid = ?');
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -37,6 +40,7 @@ if(isset($_GET['offer'])){
 }
 
 if(isset($_POST['interviewDate'])){
+    // Grabs interview date and adds it to the interviews table and changes application progress to 2 (Interview scheduled).
     if(isset($_GET['claim'])){
         $id = $_GET['claim'];
     }else{
@@ -82,6 +86,7 @@ if(isset($_GET['id']) || isset($_GET['claim'])){
     }else{
         $id = $_GET['id'];
     }
+    // Grabs selected application information.
     $stmt = $link->prepare('SELECT * FROM applications WHERE uuid = ?');
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -90,6 +95,7 @@ if(isset($_GET['id']) || isset($_GET['claim'])){
     $stmt->fetch();
     $stmt->close();
 
+    // Grabs course name.
     $stmt = $link->prepare('SELECT name FROM courses WHERE uuid = ?');
     $stmt->bind_param('i', $course_id);
     $stmt->execute();
@@ -97,6 +103,7 @@ if(isset($_GET['id']) || isset($_GET['claim'])){
     $stmt->fetch();
     $stmt->close();
 
+    // Grabs User's profile details.
     $stmt = $link->prepare('SELECT firstName, lastName, email FROM users WHERE uuid = ?');
     $stmt->bind_param('i', $profile_id);
     $stmt->execute();
@@ -104,8 +111,8 @@ if(isset($_GET['id']) || isset($_GET['claim'])){
     $stmt->fetch();
     $stmt->close();
 
-    $connection = $link;
-    //ORDER BY RAND() 
+    // Grabs all user's qualifications.
+    $connection = $link; 
     $sql3 = "SELECT * from qualifications";
     $result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
     $emparray3 = array();
@@ -115,6 +122,18 @@ if(isset($_GET['id']) || isset($_GET['claim'])){
     }
     $apidata3 = json_encode($emparray3);
     $data3 = json_decode($apidata3);
+
+    // Grabs all user's evidences.
+    $connection = $link; 
+    $sql2 = "SELECT * from evidences where profile_id = '$profile_id'";
+    $result2 = mysqli_query($connection, $sql2) or die("Error in Selecting " . mysqli_error($connection));
+    $emparray2 = array();
+    while($row2 =mysqli_fetch_assoc($result2))
+    {
+        $emparray2[] = $row2;
+    }
+    $apidata2 = json_encode($emparray2);
+    $data2 = json_decode($apidata2);
 }
 ?>
 <div class="content">
@@ -197,6 +216,30 @@ if(isset($_GET['id']) || isset($_GET['claim'])){
                 <td><?=$year?></td>
             </tr>
         <?php }} ?>
+        </tbody>
+    </table>
+
+    <br><h6>User's Evidences</h6>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Date/Time</th>
+            <th scope="col">Document Type:</th>
+            <th scope="col">Attachment</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach($data2 as $apidata2){
+            $timestamp = $apidata2->timestamp;
+            $doc_type = $apidata2->doc_type;
+            $file_name = $apidata2->file_name; ?>
+            <tr>
+                <th scope="row"><?=$timestamp?></th>
+                <td><?=$doc_type?></td>
+                <td><a href="../assets/results/<?=$file_name?>" target="_blank">Download</a></td>
+            </tr>
+        <?php } ?>
         </tbody>
     </table>
 

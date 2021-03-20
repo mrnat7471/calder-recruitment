@@ -1,4 +1,5 @@
 <?php
+// Sends email verification.
 require_once '../vendor/autoload.php';
 
 // Create the Transport

@@ -1,5 +1,6 @@
 <?php include '../layout/navbar.php';
 $userid = $_SESSION['id'];
+// Grabs accounts firstName.
 $stmt = $link->prepare('SELECT firstName FROM users WHERE uuid = ?');
 $stmt->bind_param('i', $userid);
 $stmt->execute();
@@ -8,6 +9,7 @@ $stmt->fetch();
 $stmt->close();
 
 if(isset($_GET['id'])){
+    // Grabs selected message details.
     $id = $_GET['id'];
     $stmt = $link->prepare('SELECT * FROM messages WHERE uuid = ?');
     $stmt->bind_param('i', $id);
@@ -16,6 +18,7 @@ if(isset($_GET['id'])){
     $stmt->fetch();
     $stmt->close();
 
+    // Grabs staff member's details.
     $stmt = $link->prepare('SELECT firstName, lastName FROM users WHERE uuid = ?');
     $stmt->bind_param('i', $sender);
     $stmt->execute();

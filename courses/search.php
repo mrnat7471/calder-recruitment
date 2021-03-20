@@ -2,7 +2,7 @@
 $search = "";
 include '../layout/navbar.php';
 if(isset($_GET['search'])){
-    require_once "../controllers/config.php";
+    // Grabs courses from search
     $connection = $link;
     $search = $_GET['search'];
     $sql3 = "select * from courses where name like '%$search%'";

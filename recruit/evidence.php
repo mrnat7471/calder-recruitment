@@ -1,6 +1,7 @@
 <?php include '../layout/navbar.php';
 
 if(isset($_POST['type'])){
+    // Uploads evidence to folder.
     $target_dir = "../assets/results/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
@@ -9,7 +10,6 @@ if(isset($_POST['type'])){
     $uploadOk == 1;
     if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
     } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         $file_name = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
@@ -19,6 +19,7 @@ if(isset($_POST['type'])){
             die("Connection failed: " . $conn->connect_error);
         }
         
+        // Adds evidence to database of evidences so users can find it.
         $sql = "INSERT INTO evidences (profile_id, doc_type, file_name) VALUES ('$owner', '$type', '$file_name')";
 
         if ($conn->query($sql) === TRUE) {

@@ -3,6 +3,7 @@ include '../layout/navbar.php';
 require_once '../controllers/email_verification.php';
 $id = $_SESSION['id'];
 
+// Updates firstName AND lastName in users table for this account.
 if(isset($_POST['firstName'])){
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
@@ -14,6 +15,8 @@ if(isset($_POST['firstName'])){
     }
 }
 
+// Updates email in users table for this account. It also unverifies the email, generates a new email verify string and sends a email to the
+// new email to verify it.
 if(isset($_POST['email'])){
     function generateRandomString($length = 25) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -42,6 +45,8 @@ if(isset($_POST['email'])){
     }
 
 }
+
+// Changes the current password in the database using the current password of the account.
 if(isset($_POST['currentPassword'])){
     $currentPassword = $_POST['currentPassword'];
     $newPassword = $_POST['newPassword'];
@@ -71,6 +76,8 @@ if(isset($_POST['currentPassword'])){
     }
 
 }
+
+// Grabs account information.
 $stmt = $link->prepare('SELECT firstName, lastName, email, verified, user_role FROM users WHERE uuid = ?');
 $stmt->bind_param('i', $id);
 $stmt->execute();
@@ -78,6 +85,7 @@ $stmt->bind_result($firstName, $lastName, $email, $verified, $name);
 $stmt->fetch();
 $stmt->close();
 
+// Grabs account role name.
 $stmt = $link->prepare('SELECT name FROM roles WHERE uuid = ?');
 $stmt->bind_param('i', $name);
 $stmt->execute();

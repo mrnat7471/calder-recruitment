@@ -1,6 +1,7 @@
 <?php  
 require_once "../controllers/config.php";
 if(isset($_GET['role_create'])){
+  // Gets role permission and inputs into roles_permissions database.
   $role_id = $_GET['id'];
   if(isset($_GET['ADMIN_READ'])){
     $ADMIN_READ = 1;
@@ -36,6 +37,7 @@ if(isset($_GET['role_create'])){
 }
 
 if(isset($_GET['role_name'])){
+  // Updates role name in roles database.
   $role_name = $_GET['role_name'];
   $role_id = $_GET['id'];
   

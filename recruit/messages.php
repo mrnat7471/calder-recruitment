@@ -1,6 +1,7 @@
 <?php include '../layout/navbar.php';
 $connection = $link;
 $id = $_SESSION['id'];
+// Grabs all messages sent to user.
 $sql3 = "SELECT * FROM messages WHERE receiver=$id";
 $result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
 $emparray3 = array();

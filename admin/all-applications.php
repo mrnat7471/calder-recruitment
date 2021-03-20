@@ -1,4 +1,6 @@
 <?php include '../layout/navbar.php';
+
+// Gets all applications from applications table.
 $connection = $link;
 $sql3 = "select * from applications";
 $result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
@@ -13,35 +15,6 @@ $data3 = json_decode($apidata3);?>
 <?php if($APPLICANT_READ == 1){ ?>
 
     <h5><b>All Applications</b></h5>
-    <!--    <form method="GET">
-            <div class="row" style="max-width:600px;">
-                <div class="col" style="width:165px;">
-                    <label>Staff: 
-                    <select name="search_role" class="form-control" style="width:155px;">
-                        <option value="test">All</option>
-                        <option value="test">Unassigned</option>
-                        <option value="test">Nathan Powell</option>
-                    </select></label>
-                </div>
-                <div class="col" style="width:160px;">
-                    <label>Status: 
-                    <select name="search_role" class="form-control" style="width:150px;">
-                        <option value="test">New</option>
-                    </select></label>
-                </div>
-                <div class="col" style="width:200px;">
-                    <label>Course: 
-                    <select name="search_role" class="form-control" style="width:190px;">
-                        <option value="test">Level 3 Computing</option>
-                    </select></label>
-                </div>
-                <div class="col" style="width:40px;">
-                    <label><br>
-                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Go</button>
-                    </label>
-                </div>
-            </div>
-        </form>-->
     <table class="table">
         <thead>
             <tr>
@@ -60,6 +33,8 @@ $data3 = json_decode($apidata3);?>
             $profile_id = $apidata3->profile_id;
             $staff_id = $apidata3->staff_id;
             $progress = $apidata3->progress;  
+            
+            // Grabs user's firstName, lastName from account ID.
             $stmt = $link->prepare('SELECT firstName, lastName FROM users WHERE uuid = ?');
             $stmt->bind_param('i', $profile_id);
             $stmt->execute();
@@ -67,6 +42,7 @@ $data3 = json_decode($apidata3);?>
             $stmt->fetch();
             $stmt->close();
 
+            // Grabs Staff's firstName, lastName from account ID.
             $stmt = $link->prepare('SELECT firstName, lastName FROM users WHERE uuid = ?');
             $stmt->bind_param('i', $staff_id);
             $stmt->execute();
@@ -74,6 +50,7 @@ $data3 = json_decode($apidata3);?>
             $stmt->fetch();
             $stmt->close();
 
+            // Grabs course name from course ID.
             $stmt = $link->prepare('SELECT name FROM courses WHERE uuid = ?');
             $stmt->bind_param('i', $course_id);
             $stmt->execute();

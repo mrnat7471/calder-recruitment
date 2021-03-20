@@ -1,4 +1,6 @@
 <?php include '../layout/navbar.php';
+
+// Grabs all claimed applications by staff member.
 $connection = $link;
 $staffid = $_SESSION['id'];
 $sql3 = "SELECT * FROM applications WHERE staff_id=$staffid";

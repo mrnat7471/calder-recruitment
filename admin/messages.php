@@ -1,4 +1,6 @@
 <?php include '../layout/navbar.php';
+
+// Grabs all messages sent by staff member and outputs as a JSON array.
 $connection = $link;
 $id = $_SESSION['id'];
 $sql3 = "SELECT * FROM messages WHERE sender=$id";
@@ -24,6 +26,7 @@ $data3 = json_decode($apidata3);?>
         <tbody>
             <?php
             foreach($data3 as $apidata3){
+                    //JSON is parsed and displayed.
                     $uuid = $apidata3->uuid;
                     $timestamp = $apidata3->timestamp;
                     $subject = $apidata3->subject; ?>

@@ -2,6 +2,7 @@
 require_once "../controllers/config.php";
 
 if(isset($_GET['delete_id'])){
+  // Deletes selected role from roles table and role_permissions table.
   $roleuuid = $_GET['delete_id'];
   $sql = "DELETE FROM roles WHERE uuid=$roleuuid";
 
@@ -19,6 +20,7 @@ if(isset($_GET['delete_id'])){
   }
 }
   if(isset($_GET['role_update'])){
+    // Updates the roles permissions in the database.
     $role_id = $_GET['id'];
     if(isset($_GET['ADMIN_READ'])){
       $ADMIN_READ = 1;
@@ -54,6 +56,7 @@ if(isset($_GET['delete_id'])){
   }
 
 if(isset($_GET['role_name'])){
+  // Updates the role name in the roles database.
   $role_name = $_GET['role_name'];
   $role_id = $_GET['id'];
   
@@ -71,6 +74,7 @@ if(isset($_GET['role_name'])){
 
 
 <?php include '../layout/navbar.php'; 
+// Grabs role name from roles database.
 $roleID = $_GET['id'];
 $stmt = $link->prepare("SELECT name FROM roles WHERE uuid = $roleID");
 $stmt->execute();
@@ -78,6 +82,7 @@ $stmt->bind_result($roleName);
 $stmt->fetch(); 
 $stmt->close();
 
+// Grabs role permissions from roles_permissions database.
 $stmt = $link->prepare('SELECT * FROM roles_permissions WHERE role_id = ?');
 $stmt->bind_param('i', $roleID);
 $stmt->execute();

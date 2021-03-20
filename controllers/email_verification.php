@@ -1,6 +1,7 @@
 <?php
 require_once "config.php";
 
+// Checks if account email is verified before accessing different pages.
 if(isset($_SESSION['id'])){
     $id = $_SESSION['id'];
     $stmt = $link->prepare('SELECT verified FROM users WHERE uuid = ?');

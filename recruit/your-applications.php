@@ -3,6 +3,7 @@ include '../layout/navbar.php';
 require_once "../controllers/config.php";
 $progress=0;
 if(isset($_SESSION['id'])){
+    // Grabs application progress.
     $id = $_SESSION['id'];
     $stmt = $link->prepare('SELECT progress FROM users WHERE uuid = ?');
     $stmt->bind_param('i', $id);
@@ -11,8 +12,8 @@ if(isset($_SESSION['id'])){
     $stmt->fetch();
     $stmt->close();
 
+    // Grabs all applications sent.
     $connection = $link;
-    //ORDER BY RAND() 
     $sql3 = "select * from applications";
     $result3 = mysqli_query($connection, $sql3) or die("Error in Selecting " . mysqli_error($connection));
     $emparray3 = array();
