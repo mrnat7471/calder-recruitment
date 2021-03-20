@@ -42,7 +42,7 @@ if(isset($_GET['logout'])){
       </li>
 
       <li class="nav-item dropdown">
-      <?php if($APPLICANT_READ === 1){ ?>
+      <?php if($PROGRESS >= 1){ ?>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Applications
         </a>
