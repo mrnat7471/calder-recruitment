@@ -20,7 +20,7 @@ $data3 = json_decode($apidata3);
     </div>
 </div>
 <div class="container">
-<div class="row" style="width:82%;margin:auto;">
+<div class="row" style="margin:auto;">
       <div class="col-md-4 mt-2">
         <div class="card mb-2 mt-2" style="width: 18rem;">
             <img class="card-img-top" height=190px style="object-fit:cover;" src="../assets/card.jpg" alt="Card image cap">
