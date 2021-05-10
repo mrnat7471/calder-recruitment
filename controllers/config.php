@@ -1,8 +1,8 @@
 <?php
-define('DB_SERVER', 'localhost:3306'); #localhost:3306
-define('DB_USERNAME', 'Nathan'); #Nathan
-define('DB_PASSWORD', 'b6_08yDb'); #b6_08yDb
-define('DB_NAME', 'recruitment');
+define('DB_SERVER', '#');
+define('DB_USERNAME', '#');
+define('DB_PASSWORD', '#');
+define('DB_NAME', '#');
 
 $servername = DB_SERVER;
 $username = DB_USERNAME;
