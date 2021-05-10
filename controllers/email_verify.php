@@ -4,8 +4,8 @@ require_once '../vendor/autoload.php';
 
 // Create the Transport
 $transport = (new Swift_SmtpTransport('fw-cpanel01.fyfeweb.com', 465, 'ssl'))
-->setUsername('website@reachradio.co.uk')
-->setPassword('[&Rb_y8&x?oP');
+->setUsername('#')
+->setPassword('#');
 
 // Create the Mailer using your created Transport
 $mailer = new Swift_Mailer($transport);
